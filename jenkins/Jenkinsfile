@@ -1,3 +1,5 @@
+def result = ''
+
 pipeline {
   agent any
 
@@ -9,7 +11,7 @@ pipeline {
     stage('hello') {
       steps {
         scripts {
-          def result = setup('hello world')
+          result = setup('hello world')
           writeFile(file: fileName, text: result)
         }
       }
