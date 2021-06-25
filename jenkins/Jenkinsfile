@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-        echo 'hello world'
-        writeFile(file: fileName, text: 'hello world')
+        def result = setup('hello world')
+        writeFile(file: fileName, text: result)
       }
     }
     stage('archive artifacts') {
@@ -18,4 +18,9 @@ pipeline {
       }
     }
   }
+}
+
+def setup(text) {
+  echo text
+  return text
 }
