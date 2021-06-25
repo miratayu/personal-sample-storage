@@ -1,10 +1,19 @@
 pipeline {
   agent any
+
+  environment {
+    fileName = 'output.txt'
+  }
+
   stages {
     stage('hello') {
       steps {
         echo 'hello world'
+        writeFile(file: fileName, text: 'hello world')
       }
+    }
+    stage('archive artifacts'){
+      archiveArtifacts fileName
     }
   }
 }
