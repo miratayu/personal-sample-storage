@@ -12,8 +12,10 @@ pipeline {
         writeFile(file: fileName, text: 'hello world')
       }
     }
-    stage('archive artifacts'){
-      archiveArtifacts fileName
+    stage('archive artifacts') {
+      steps {
+        archiveArtifacts fileName
+      }
     }
   }
 }
