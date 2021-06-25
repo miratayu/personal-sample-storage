@@ -8,14 +8,21 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-        def result = setup('hello world')
-        writeFile(file: fileName, text: result)
+        scripts {
+          def result = setup('hello world')
+          writeFile(file: fileName, text: result)
+        }
       }
     }
     stage('archive artifacts') {
       steps {
         archiveArtifacts fileName
       }
+    }
+  }
+  post {
+    success {
+      cleanWs()
     }
   }
 }
