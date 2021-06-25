@@ -2,15 +2,15 @@ pipeline {
   agent any
 
   environment {
-    fileName = 'output.txt'
+    fileName = 'output.json'
   }
 
   stages {
     stage('hello') {
       steps {
         script {
-          def result = setup('hello world')
-          writeFile(file: fileName, text: result)
+          def result = setup('abcde')
+          writeFile(file: fileName, text: result.stripIndent())
         }
       }
     }
@@ -29,5 +29,10 @@ pipeline {
 
 def setup(text) {
   echo text
-  return text
+  return """\
+    {
+      '${text}': 'x',
+      'b': 'y'
+    }
+    """
 }
