@@ -15,7 +15,7 @@ pipeline {
           def result = add_json_contents(read_json['list'])
           def output_json = "{'results': ${result}}"
           // output_json = output_json.replace('[','{').replace(']','}')
-          writeFile(file: fileName, text: JsonOutput.toJson(output_json)
+          writeFile(file: fileName, text: JsonOutput.toJson(output_json))
         }
       }
     }
