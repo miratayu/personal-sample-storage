@@ -30,14 +30,9 @@ pipeline {
 }
 
 def add_json_contents(contents) {
-  def added_contents = ""
+  def added_contents
   contents.each { name_as_key, details ->
-    added_contents += create_json_contents(name_as_key, details)
+    added_contents['name_as_key'] = details['value']
   }
   return added_contents
-}
-
-def create_json_contents(name_as_key, details) {
-  echo 'Create'
-  return "'${name_as_key}': ${details['value']}"
 }
