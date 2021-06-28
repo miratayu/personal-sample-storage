@@ -12,8 +12,7 @@ pipeline {
           def read_json = readJSON file: "jenkins/contents_list.json"
           def result = add_json_contents(read_json['list'])
           def output_json = "{'results': ${result}}"
-          // output_json = output_json.replaceAll("\[","\{")
-          // output_json = output_json.replaceAll("\]","\}")
+          output_json = output_json.replace("[","{").replace("]","}")
           writeFile(file: fileName, text: output_json)
         }
       }
