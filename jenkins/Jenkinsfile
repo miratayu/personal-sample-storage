@@ -13,8 +13,6 @@ pipeline {
         script {
           def read_json = readJSON file: 'jenkins/contents_list.json'
           def result = add_json_contents(read_json['list'])
-          def output_json = "{'results': ${result}}"
-          // output_json = output_json.replace('[','{').replace(']','}')
           writeFile(file: fileName, text: JsonOutput.toJson('results': result))
         }
       }
@@ -35,7 +33,7 @@ pipeline {
 def add_json_contents(contents) {
   def added_contents = [:]
   contents.each { key, value ->
-    added_contents[key] = "{'result': ${value['value']}}"
+    added_contents[key] = {"result": value['value']}
   }
   return added_contents
 }
