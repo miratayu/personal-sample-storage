@@ -32,8 +32,8 @@ pipeline {
 
 def add_json_contents(contents) {
   def added_contents = [:]
-  contents.each { name_as_key, details ->
-    added_contents[(name_as_key)] = (details['value'])
+  contents.each { key, value ->
+    added_contents[key] = value['value']
   }
   return added_contents
 }
