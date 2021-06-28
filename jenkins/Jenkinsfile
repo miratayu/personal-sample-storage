@@ -9,8 +9,10 @@ pipeline {
     stage('hello') {
       steps {
         script {
-          def result = setup('abcde')
-          writeFile(file: fileName, text: result.stripIndent())
+          def read_json = readJSON file: "jenkins/contents_list.json"
+          def result = add_json_contents(read_json['list'])
+          def output_json = "{'results': {${result}}}"
+          writeFile(file: fileName, text: output_json)
         }
       }
     }
@@ -27,12 +29,15 @@ pipeline {
   }
 }
 
-def setup(text) {
-  echo text
-  return """\
-    {
-      '${text}': 'x',
-      'b': 'y'
-    }
-    """
+def add_json_contents(contents) {
+  def added_contents = ""
+  contents.each { name_as_key, details ->
+    added_contents += create_json_contents(name_as_key, details)
+  }
+  return added_contents
+}
+
+def create_json_contents(name_as_key, details) {
+  echo 'Create'
+  return "'${name_as_key}': ${details}"
 }
