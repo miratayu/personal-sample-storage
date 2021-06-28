@@ -39,5 +39,5 @@ def add_json_contents(contents) {
 
 def create_json_contents(name_as_key, details) {
   echo 'Create'
-  return "'${name_as_key}': ${details}"
+  return "'${name_as_key}': ${details['value']}"
 }
