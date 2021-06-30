@@ -19,7 +19,7 @@ pipeline {
           echo "abc: ${abc.class}"
           def ghi = abc.indexOf("c")
           echo "ghi: ${ghi}"
-          def test_text = "abc\ndef\nghi\n"
+          def test_text = "abc\ndef\nghi\nabc\ndef\nAAA\nabc\ndef\nBBB\n"
           echo "test_text: ${test_text.class}"
           echo "test_text: ${test_text.indexOf("\n")}"
           writeFile(file: logName, text: test_text)
