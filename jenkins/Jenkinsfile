@@ -16,6 +16,7 @@ pipeline {
           def result = add_json_contents(read_json['list'])
           writeFile(file: fileName, text: JsonOutput.toJson('results': result))
           def test_text = "abc\ndef\nghi\n"
+          echo "test_text: ${test_text.class}"
           writeFile(file: logName, text: test_text)
         }
       }
