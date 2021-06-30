@@ -21,6 +21,7 @@ pipeline {
           echo "ghi: ${ghi}"
           def test_text = "abc\ndef\nghi\n"
           echo "test_text: ${test_text.class}"
+          echo "test_text: ${test_text.indexOf("\n")}"
           writeFile(file: logName, text: test_text)
         }
       }
