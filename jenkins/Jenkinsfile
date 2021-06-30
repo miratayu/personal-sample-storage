@@ -6,6 +6,7 @@ pipeline {
   environment {
     fileName = 'output.json'
     logName = 'test.log'
+    summaryName = 'summary.txt'
   }
 
   stages {
@@ -32,6 +33,7 @@ pipeline {
             }
           }
           echo "result_line: ${result_line}"
+          writeFile(file: summaryName, text: result_line)
         }
       }
     }
@@ -39,6 +41,7 @@ pipeline {
       steps {
         archiveArtifacts fileName
         archiveArtifacts logName
+        archiveArtifacts summaryName
       }
     }
   }
