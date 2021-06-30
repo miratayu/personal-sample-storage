@@ -23,6 +23,8 @@ pipeline {
           echo "test_text: ${test_text.class}"
           echo "test_text: ${test_text.indexOf("\n")}"
           writeFile(file: logName, text: test_text)
+          def test_line = test_text.split("\n")
+          echo "test_line: ${test_line}"
         }
       }
     }
