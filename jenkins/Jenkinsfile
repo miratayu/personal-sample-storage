@@ -17,7 +17,7 @@ pipeline {
           writeFile(file: fileName, text: JsonOutput.toJson('results': result))
           def abc = "abc"
           echo "abc: ${abc.class}"
-          def ghi = abc.indexOf("bc")
+          def ghi = abc.indexOf("c")
           echo "ghi: ${ghi}"
           def test_text = "abc\ndef\nghi\n"
           echo "test_text: ${test_text.class}"
