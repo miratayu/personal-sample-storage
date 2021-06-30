@@ -25,6 +25,13 @@ pipeline {
           writeFile(file: logName, text: test_text)
           def test_line = test_text.split("\n")
           echo "test_line: ${test_line}"
+          def result_line = ""
+          for( def i = 0; i < test_line.size(); i++ ) {
+            if test_line[i].contents("def") {
+                result_line += test_line[i+1]
+            }
+          }
+          echo "result_line: ${result_line}"
         }
       }
     }
