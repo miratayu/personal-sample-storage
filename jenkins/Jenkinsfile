@@ -5,6 +5,7 @@ pipeline {
 
   environment {
     fileName = 'output.json'
+    logName = 'test.log'
   }
 
   stages {
@@ -14,12 +15,19 @@ pipeline {
           def read_json = readJSON file: 'jenkins/contents_list.json'
           def result = add_json_contents(read_json['list'])
           writeFile(file: fileName, text: JsonOutput.toJson('results': result))
+          def test_text = """\
+          abc\
+          def\
+          ghi
+          """
+          writeFile(file: logName, text: test_text)
         }
       }
     }
     stage('archive artifacts') {
       steps {
         archiveArtifacts fileName
+        archiveArtifacts logName
       }
     }
   }
