@@ -27,8 +27,8 @@ pipeline {
           echo "test_line: ${test_line}"
           def result_line = ""
           for ( def i = 0; i < test_line.size(); i++ ) {
-            if (test_line[i].contents("def")) {
-                result_line += test_line[i]
+            if (test_line[i].contains("def")) {
+                result_line += test_line[i+1]
             }
           }
           echo "result_line: ${result_line}"
