@@ -22,7 +22,7 @@ pipeline {
           echo "test_text: ${test_text.indexOf("\n")}"
           writeFile(file: logName, text: test_text)
 
-          def f new File(logName)
+          def f = new File(logName)
           f.eachLine{line->
             echo "line: ${line}"
           }
