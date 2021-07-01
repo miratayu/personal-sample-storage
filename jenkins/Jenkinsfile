@@ -22,10 +22,15 @@ pipeline {
           echo "test_text: ${test_text.indexOf("\n")}"
           writeFile(file: logName, text: test_text)
 
+          def f new File(logName)
+          f.eachLine{line->
+            echo "line: ${line}"
+          }
+
           def test_line = test_text.split("\n")
           echo "test_line: ${test_line}"
           def result_line = ""
-          for ( def i = 0; i < test_line.size(); i++ ) {
+          for (def i = 0; i < test_line.size(); i++) {
             if (test_line[i].contains("def")) {
                 result_line += test_line[i+1] + "\n"
             }
