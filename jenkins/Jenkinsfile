@@ -24,12 +24,11 @@ pipeline {
 
           // Scripts not permitted to use new java.io.File java.lang.String
           // No such DSL method 'File' found among steps [... List of commands that can be used ...]
-          /" jenkins の groovy では下記のような書き方は出来ない……
-          f = new File(logName)
-          f.eachLine{line->
-            echo 'line: ${line}'
-          }
-          "/
+          // jenkins の groovy では下記のような書き方は出来ない……
+          // f = new File(logName)
+          // f.eachLine{line->
+          //   echo "line: ${line}"
+          // }
 
           def test_line = test_text.split("\n")
           echo "test_line: ${test_line}"
