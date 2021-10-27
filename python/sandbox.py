@@ -5,6 +5,20 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
+def data_info(data, key) -> str:
+    value = data_checker(data, key)
+    return f"{key}: {value}"
+
+
+def data_checker(data, key) -> str:
+    value = None
+    try:
+        value = data[key]
+    except KeyError as e:
+        logger.error(f"Key does not exist: {e}")
+    return value
+
+
 def join_items(data):
     result = ''
     for key, value in data.items():
@@ -21,4 +35,5 @@ if __name__ == '__main__':
     logger.info(f'test_file: {test_file}')
     for index, current in enumerate(test_file['list']):
         logger.info(f'index: {index}, current: {current}')
+        logger.info(data_info(current, 'title'))
         join_items(current['item'])
