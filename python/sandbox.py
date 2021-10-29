@@ -5,12 +5,12 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-def data_info(data, key) -> str:
+def data_info(data: dict, key: str) -> str:
     value = data_checker(data, key)
     return f"{key}: {value}"
 
 
-def data_checker(data, key) -> str:
+def data_checker(data: dict, key: str) -> str:
     value = None
     try:
         value = data[key]
@@ -19,7 +19,7 @@ def data_checker(data, key) -> str:
     return value
 
 
-def join_items(data):
+def join_items(data: dict) -> None:
     result = ''
     for key, value in data.items():
         result += ','
