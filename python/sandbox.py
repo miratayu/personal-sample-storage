@@ -75,8 +75,10 @@ def run_step_two() -> None:
     logger.info(f'run_step_two')
 
 
-def run(*run_steps) -> None:
+def run(*run_steps, a=0, b=1) -> None:
     repeat_count = 3
+    logger.info(f'a: {a}')
+    logger.info(f'b: {b}')
     for run_step in run_steps:
         for count in range(repeat_count):
             logger.info(f'count: {count+1} / {repeat_count}')
@@ -88,5 +90,5 @@ if __name__ == '__main__':
 
     logger.info(f'test1: {test1(add)}')
     run_open(open_step)
-    run(run_step_one, run_step_two)
+    run(run_step_one, run_step_two, a=1, b=3)
 
