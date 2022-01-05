@@ -67,9 +67,26 @@ def run_open(func) -> None:
     func()
 
 
+def run_step_one() -> None:
+    logger.info(f'run_step_one')
+
+
+def run_step_two() -> None:
+    logger.info(f'run_step_two')
+
+
+def run(*run_steps) -> None:
+    repeat_count = 3
+    for run_step in run_steps:
+        for count in range(repeat_count):
+            logger.info(f'count: {count+1} / {repeat_count}')
+            run_step()
+
+
 if __name__ == '__main__':
     logger.info('sandbox')
 
     logger.info(f'test1: {test1(add)}')
     run_open(open_step)
+    run(run_step_one, run_step_two)
 
