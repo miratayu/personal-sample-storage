@@ -13,8 +13,9 @@ pipeline {
     stage('hello') {
       steps {
         script {
+          def util = load "jenkins/util.groovy"
           def read_json = readJSON file: 'jenkins/contents_list.json'
-          def result = add_json_contents(read_json['list'])
+          def result = util.add_json_contents(read_json['list'])
           writeFile(file: fileName, text: JsonOutput.toJson('results': result))
 
           def test_text = "abc\ndef\nghi\nabc\ndef\nAAA\nabc\ndef\nBBB\n"
