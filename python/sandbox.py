@@ -91,3 +91,4 @@ if __name__ == '__main__':
     logger.info(f'test1: {test1(add)}')
     run_open(open_step)
     run(run_step_one, run_step_two, a=1, b=3)
+    load_json_file()
