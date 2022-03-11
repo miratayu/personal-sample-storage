@@ -1,0 +1,27 @@
+import groovy.json.JsonOutput
+
+pipeline {
+  agent any
+
+  stages {
+    stage('Run other job') {
+      steps {
+        script {
+          def other_job = build(job: "job_name",
+            parameters: [
+              booleanParams(name: "boolean", value: true),
+              string(name: "string", value: "string"),
+              text(name: "text", value: "text"),
+              string(name: "choice", value: "Enter the choice as a string")
+            ]
+          )
+        }
+      }
+    }
+  }
+  post {
+    cleanup {
+      cleanWs()
+    }
+  }
+}
