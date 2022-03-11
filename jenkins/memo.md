@@ -11,3 +11,10 @@ f.eachLine{line->
 
 次にそもそも `File` は無いと言われる  
 `No such DSL method 'File' found among steps [... List of commands that can be used ...]`
+
+## 上流・下流の作り方(Jenkinsパイプラインから別ジョブ呼び出す)
+1. 上流・下流のjobをそれぞれ作成する。
+2. 上流jobのJenkinsfileで [Pipeline: Build Step](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/) をする。
+   1. `job` には下流jobのjob名を入れる。
+   2. `parameters` には `choice` が無いので `string` で入れる。
+3. 上流jobを実行すると下流jobが動く！
