@@ -27,6 +27,9 @@ pipeline {
           if (test_config.a) {
             echo "a: ${test_config.a}"
           }
+
+          def run_commands = load "jenkins/build_step/child_job/run_commands.groovy"
+          run_commands.run(test_config)
         }
       }
     }
