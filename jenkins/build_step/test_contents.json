@@ -1,6 +1,37 @@
 {
-  "title": "sample",
-  "label": "sample",
-  "num": 5,
-  "flg": false
+  "config_list": {
+    "set_a": {
+      "string": "set_a",
+      "test_config": {
+        "title": "sample_a",
+        "label": "sample_A",
+        "num": 5,
+        "flg": true
+      },
+      "toggle": true,
+      "choice": "One"
+    },
+    "set_b": {
+      "string": "set_b",
+      "test_config": {
+        "title": "sample_b",
+        "label": "sample_B",
+        "num": 10,
+        "flg": false
+      },
+      "toggle": true,
+      "choice": "Two"
+    },
+    "set_c": {
+      "string": "set_c",
+      "test_config": {
+        "title": "sample_c",
+        "label": "sample_C",
+        "num": 15,
+        "flg": false
+      },
+      "toggle": false,
+      "choice": "Three"
+    }
+  }
 }
