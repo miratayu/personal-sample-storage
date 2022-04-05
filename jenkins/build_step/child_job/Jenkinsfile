@@ -1,0 +1,33 @@
+import groovy.json.JsonOutput
+
+pipeline {
+  agent any
+
+  parameters {
+    string(name: 'STRING', defaultValue: 'string', description: 'string')
+    text(name: 'TEST_CONFIG', defaultValue: '', description: 'test_config.json')
+    booleanParam(name: 'BOOLEAN', defaultValue: true, description: 'boolean')
+    choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'choice')
+  }
+
+  stages {
+    stage('execute') {
+      steps {
+        script {
+          echo 'execute'
+          def test_config_file = "&{WORKSPACE}/jenkins/build_step/child_job/test_config.json"
+          if (params.TEST_CONFIG != '') {
+            writeFile(file: test_config_file, text: params.TEST_CONFIG)
+          }
+          test_config = readJSON file: test_config_file
+          archiveArtifacts artifacts: "**/test_config.json", allowEmptyArchive: true
+        }
+      }
+    }
+  }
+  post {
+    success {
+      cleanWs()
+    }
+  }
+}
