@@ -18,7 +18,7 @@ pipeline {
               def other_job = build(job: "child_job",
                 parameters: [
                   string(name: "STRING", value: contents_list.string),
-                  text(name: "TEST_CONFIG", value: contents_list.test_config),
+                  text(name: "TEST_CONFIG", value: contents_list.test_config.toStoring()),
                   booleanParams(name: "BOOLEAN", value: contents_list.toggle),
                   string(name: "CHOICE", value: contents_list.choice)
                 ]
