@@ -21,6 +21,12 @@ pipeline {
           }
           test_config = readJSON file: test_config_file
           archiveArtifacts artifacts: "**/test_config.json", allowEmptyArchive: true
+          if (test_config.title) {
+            echo "title: ${test_config.title}"
+          }
+          if (test_config.a) {
+            echo "a: ${test_config.a}"
+          }
         }
       }
     }
