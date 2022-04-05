@@ -27,6 +27,14 @@ pipeline {
           if (test_config?.a) {
             echo "a: ${test_config?.a}"
           }
+          if (!test_config?.add) {
+            test_config.add = [:]
+          }
+          if (!test_config?.add?.abc) {
+            test_config.add.abc = "test_abc"
+          }
+
+          echo "test_config: ${test_config}"
 
           def run_commands = load "jenkins/build_step/child_job/run_commands.groovy"
           echo "run_commands: ${run_commands}"
