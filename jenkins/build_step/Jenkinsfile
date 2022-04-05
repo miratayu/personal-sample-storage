@@ -19,7 +19,7 @@ pipeline {
                 parameters: [
                   string(name: "STRING", value: contents_list.string),
                   text(name: "TEST_CONFIG", value: contents_list.test_config.toString()),
-                  booleanParams(name: "BOOLEAN", value: contents_list.toggle),
+                  booleanParam(name: "BOOLEAN", value: contents_list.toggle),
                   string(name: "CHOICE", value: contents_list.choice)
                 ]
               )
