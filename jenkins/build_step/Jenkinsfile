@@ -7,6 +7,10 @@ pipeline {
     stage('Run other job') {
       steps {
         script {
+          def config_file = "${WORKSPACE}/jenkins/build_step/config.json"
+          def config = readJSON file: config_file
+
+
           def other_job = build(job: "job_name",
             parameters: [
               booleanParams(name: "boolean", value: true),
