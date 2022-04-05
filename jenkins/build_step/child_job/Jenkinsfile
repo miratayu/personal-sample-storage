@@ -15,7 +15,7 @@ pipeline {
       steps {
         script {
           echo 'execute'
-          def test_config_file = "&{WORKSPACE}/jenkins/build_step/child_job/test_config.json"
+          def test_config_file = "${WORKSPACE}/jenkins/build_step/child_job/test_config.json"
           if (params.TEST_CONFIG != '') {
             writeFile(file: test_config_file, text: params.TEST_CONFIG)
           }
