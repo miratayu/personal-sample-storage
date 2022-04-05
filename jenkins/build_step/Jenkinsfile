@@ -4,21 +4,24 @@ pipeline {
   agent any
 
   stages {
-    stage('Run other job') {
+    stage('Run child job') {
       steps {
         script {
-          def config_file = "${WORKSPACE}/jenkins/build_step/config.json"
-          def config = readJSON file: config_file
+          def test_contents_file = "${WORKSPACE}/jenkins/build_step/test_contents.json"
+          test_contents = readJSON file: test_contents_file
+          archiveArtifacts artifacts: "**/test_contents.json", allowEmptyArchive: true
 
-
-          def other_job = build(job: "job_name",
-            parameters: [
-              booleanParams(name: "boolean", value: true),
-              string(name: "string", value: "string"),
-              text(name: "text", value: "text"),
-              string(name: "choice", value: "Enter the choice as a string")
-            ]
-          )
+          def test_configs = test_contents.test_config
+          test_contents.each { contents_name_as_key, contents_details ->
+            def other_job = build(job: "child_job",
+              parameters: [
+                string(name: "string", value: "string"),
+                text(name: "text", value: "text"),
+                booleanParams(name: "boolean", value: true),
+                string(name: "choice", value: "Enter the choice as a string")
+              ]
+            )
+          }
         }
       }
     }
