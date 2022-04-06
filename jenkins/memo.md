@@ -26,3 +26,9 @@ Pipeline Utility Steps
 ### その他リンク
 - [使ってみよう！Jenkins「Pipeline」](https://qiita.com/miyasakura_/items/9d9a8873c333cb9e9f43)
 - [Jenkins Declarative Pipeline 〜whenを使い倒す！〜](https://qiita.com/AHA_oretama/items/00813a041dc22416c6e4)
+- [Apache Groovyチュートリアル](https://koji-k.github.io/groovy-tutorial/index.html)
+- [Apache Groovyチュートリアル 5.if文](https://koji-k.github.io/groovy-tutorial/if/index.html)
+- [Apache Groovyチュートリアル 9.Nullセーフ](https://koji-k.github.io/groovy-tutorial/null-safe/index.html)
+- [Jenkins parameters](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
+- [Jenkins Pipeline: Build Step](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/#pipeline-build-step)
+- [Jenkins Pipeline Utility Steps](https://www.jenkins.io/doc/pipeline/steps/pipeline-utility-steps/#pipeline-utility-steps)
