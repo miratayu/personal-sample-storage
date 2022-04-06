@@ -42,7 +42,7 @@ pipeline {
 
           def utility_commands = load "jenkins/build_step/child_job/utility_commands.groovy"
           echo "utility_commands: ${utility_commands}"
-          target = ""
+          target = "123abc"
           utility_commands.util(target)
         }
       }
