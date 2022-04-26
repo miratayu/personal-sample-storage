@@ -1,6 +1,8 @@
 import logging
 import json
 
+from util_pack import sample
+
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -92,3 +94,6 @@ if __name__ == '__main__':
     run_open(open_step)
     run(run_step_one, run_step_two, a=1, b=3)
     load_json_file()
+
+    logger.info(f'sample.printer: {sample.printer()}')
+
