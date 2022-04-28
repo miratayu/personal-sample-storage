@@ -15,4 +15,3 @@ if __name__ == '__main__':
     sample.load_json_file()
 
     logger.info(f'sample.printer: {sample.printer()}')
-
