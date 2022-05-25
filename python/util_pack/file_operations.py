@@ -34,6 +34,7 @@ def consolidate_files(file_pattern: str = r"*.txt") -> None:
         with open(current_file, "r") as load_file:
             result_text += (load_file.read() + "\n")
     logger.info(f"result_text: {result_text}")
+
     write_file("consolidate.txt", result_text)
 
 
@@ -46,8 +47,9 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
     for current_file in result_files:
         logger.debug(f"current_file: {current_file}")
         with open(current_file, "r") as load_file:
-            result_list += (load_file.readlines() + ["\n"])
+            result_list += load_file.readlines()
     logger.info(f"result_list: {result_list}")
+
     result = list(dict.fromkeys(result_list))
     logger.info(f"result: {result}")
 

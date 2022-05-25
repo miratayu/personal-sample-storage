@@ -19,8 +19,8 @@ def sample_runs() -> None:
 if __name__ == '__main__':
     logger.info('sandbox')
     # sample_runs()
-    text = "abc\ndef\nghi"
-    text2 = ["## :warning: **WARNING** :warning:\n", "warning text\n", "jkl\n", "abc\n", "mno\n", "ghi\n", "pqr"]
+    text = "abc\ndef\nghi\n"
+    text2 = ["## :warning: **WARNING** :warning:\n", "warning text\n", "jkl\n", "abc\n", "mno\n", "ghi\n", "pqr\n"]
     file_operations.write_file("test_sample.txt", text)
     file_operations.write_file("test_sample_2.txt", text2)
     file_operations.consolidate_files_duplicate_deletion(r"test_sample*.txt")
