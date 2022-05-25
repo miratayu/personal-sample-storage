@@ -53,12 +53,22 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
     result = list(dict.fromkeys(result_list))
     logger.info(f"result: {result}")
 
-    warnings = [s for s in result if s.startswith("## :warning: ")]
-    warnings += [s for s in result if s.startswith("warning text")]
+    warning_head = split_str_list(result, "## :warning: ")
+    warning_text = split_str_list(warning_head["unmatch"], "warning text")
+    warnings = warning_head["match"] + warning_text["match"]
     logger.info(f"warnings: {warnings}")
 
-    other = [s for s in result if not s.startswith("## :warning: ")]
-    others = [s for s in other if not s.startswith("warning text")]
+    others = warning_text["unmatch"]
     logger.info(f"others: {others}")
 
     write_file("consolidate.txt", warnings + others)
+
+
+def split_str_list(str_list: list, search_text: str) -> dict:
+    """ split str_list """
+    logger.info(f"split str_list")
+    return {
+        "match": [s for s in str_list if s.startswith(search_text)],
+        "unmatch": [s for s in str_list if not s.startswith(search_text)]
+    }
+
