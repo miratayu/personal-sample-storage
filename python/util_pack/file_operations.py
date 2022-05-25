@@ -50,4 +50,13 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
     logger.info(f"result_list: {result_list}")
     result = list(dict.fromkeys(result_list))
     logger.info(f"result: {result}")
+
+    warnings = [s for s in result if s.startswith("## :warning: ")]
+    warnings += [s for s in result if s.startswith("warning text")]
+    logger.info(f"warnings: {warnings}")
+
+    other = [s for s in result if not s.startswith("## :warning: ")]
+    test = [s for s in other if not s.startswith("warning text")]
+    logger.info(f"test: {test}")
+
     write_file("consolidate.txt", result)
