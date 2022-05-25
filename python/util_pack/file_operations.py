@@ -6,28 +6,21 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-def write_file(file_name: str, text: str) -> None:
+def write_file(file_name: str, text: any) -> None:
     """ write file """
     logger.info(f"write file")
+    logger.info(f"type(text): {type(text)}")
     if os.path.exists(file_name):
         os.remove(file_name)
     try:
-        with open(file_name, "w", encoding="UTF-8") as file:
-            file.write(text)
+        if isinstance(text, str):
+            with open(file_name, "w", encoding="UTF-8") as file:
+                file.write(text)
+        elif isinstance(text, list):
+            with open(file_name, "w", encoding="utf-8", newline="\n") as file:
+                file.writelines(text)
     except Exception as exception:
         logger.info(f"{file_name} write exception: {exception}")
-
-
-def writelines_file(file_name: str, lines: list) -> None:
-    """ writelines file """
-    logger.info(f"writelines file")
-    if os.path.exists(file_name):
-        os.remove(file_name)
-    try:
-        with open(file_name, "w", encoding="utf-8", newline="\n") as file:
-            file.writelines(lines)
-    except Exception as exception:
-        logger.info(f"{file_name} writelines exception: {exception}")
 
 
 def consolidate_files(file_pattern: str = r"*.txt") -> None:
@@ -57,4 +50,4 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
     logger.info(f"result_list: {result_list}")
     result = list(dict.fromkeys(result_list))
     logger.info(f"result: {result}")
-    writelines_file("consolidate.txt", result)
+    write_file("consolidate.txt", result)
