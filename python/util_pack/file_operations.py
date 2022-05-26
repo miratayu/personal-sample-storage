@@ -1,6 +1,7 @@
 import os
 import logging
 import glob
+import re
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -75,9 +76,17 @@ def consolidate_summary() -> None:
     logger.info(f"consolidate_summary")
     with open("consolidate.txt", "r") as load_file:
         output_text = load_file.read()
+    text_pattern = r"\*\*\*\*\*start\*\*\*\*\*.*\*\*\*\*\*end\*\*\*\*\*"
+    hit_texts = re.findall(text_pattern, output_text)
+    logger.info(f"hit_texts: {hit_texts}")
+    omit_text = output_text
+    for hit_text in hit_texts:
+        omit_text = omit_text.replace(hit_text, "")
+    logger.info(f"omit_text: {omit_text}")
+
     summary_header = "===== consolidate summary ====="
     summary_footer = "==============================="
-    summary_body = output_text.replace('*****link*****', '').replace('## ', '')
+    summary_body = omit_text.replace('*****link*****', '').replace('## ', '')
     logger.info(f"\n{summary_header}\n{summary_body}\n{summary_footer}")
 
 
