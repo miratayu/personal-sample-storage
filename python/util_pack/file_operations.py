@@ -71,6 +71,8 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
 
 
 def consolidate_summary() -> None:
+    """ consolidate_summary """
+    logger.info(f"consolidate_summary")
     with open("consolidate.txt", "r") as load_file:
         output_text = load_file.read()
     summary_header = "===== consolidate summary ====="
