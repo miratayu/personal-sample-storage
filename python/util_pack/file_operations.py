@@ -67,6 +67,17 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
 
     write_file("consolidate.txt", result)
 
+    consolidate_summary()
+
+
+def consolidate_summary() -> None:
+    with open("consolidate.txt", "r") as load_file:
+        output_text = load_file.read()
+    summary_header = "===== consolidate summary ====="
+    summary_footer = "==============================="
+    summary_body = output_text.replace('*****link*****', '').replace('## ', '')
+    logger.info(f"\n{summary_header}\n{summary_body}\n{summary_footer}")
+
 
 def split_str_list(str_list: list, search_text: str) -> dict:
     """ split str_list """

@@ -7,6 +7,16 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
+def inequality_sign() -> None:
+    min_count = 10
+    max_count = 10
+    current_count = 10
+    logger.info(f"current_count > min_count:{current_count > min_count}")
+    logger.info(f"current_count >= min_count:{current_count >= min_count}")
+    logger.info(f"current_count <= max_count:{current_count <= max_count}")
+    logger.info(f"current_count < max_count:{current_count < max_count}")
+
+
 def sample_runs() -> None:
     """ sample runs """
     logger.info(f"sample_runs")
@@ -40,3 +50,4 @@ if __name__ == '__main__':
     logger.info("sandbox")
     # sample_runs()
     file_operation()
+    # inequality_sign()
