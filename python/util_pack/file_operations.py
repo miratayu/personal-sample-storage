@@ -76,7 +76,7 @@ def consolidate_summary() -> None:
     logger.info(f"consolidate_summary")
     with open("consolidate.txt", "r") as load_file:
         output_text = load_file.read()
-    text_pattern = r"\*\*\*\*\*start\*\*\*\*\*.*\*\*\*\*\*end\*\*\*\*\*"
+    text_pattern = r"\*\*\*\*\*start\*\*\*\*\*.*\*\*\*\*\*end\*\*\*\*\*\n"
     hit_texts = re.findall(text_pattern, output_text)
     logger.info(f"hit_texts: {hit_texts}")
     omit_text = output_text
@@ -86,7 +86,7 @@ def consolidate_summary() -> None:
 
     summary_header = "===== consolidate summary ====="
     summary_footer = "==============================="
-    summary_body = omit_text.replace('*****link*****', '').replace('## ', '')
+    summary_body = omit_text.replace('*****link*****\n', '').replace('## ', '')
     logger.info(f"\n{summary_header}\n{summary_body}\n{summary_footer}")
 
 
