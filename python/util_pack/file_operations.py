@@ -49,6 +49,7 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
         logger.debug(f"current_file: {current_file}")
         with open(current_file, "r") as load_file:
             result_list += load_file.readlines()
+        result_list.append("\n")
     logger.info(f"result_list: {result_list}")
 
     warning_head = split_str_list(result_list, "## :warning: ")
@@ -63,7 +64,7 @@ def consolidate_files_duplicate_deletion(file_pattern: str = r"*.txt") -> None:
     others = links["unmatch"]
     logger.info(f"others: {others}")
 
-    result = warnings + link + others
+    result = warnings + link + ["\n"] + others
     logger.info(f"result: {result}")
 
     write_file("consolidate.txt", result)
