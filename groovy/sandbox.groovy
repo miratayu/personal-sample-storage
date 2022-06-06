@@ -2,25 +2,25 @@
 class Example {
     static void sum(int a,int b) {
         int c = a+b
-        println "Hello" as java.lang.Object
-        println c as java.lang.Object
+        println "Hello"
+        println c
     }
 
     static void say(first,second) {
         if(!first) {
-            println "first string is empty!" as java.lang.Object
+            println "first string is empty!"
             return
         }
         String result = "say!" + (first as java.lang.CharSequence) + (second as java.lang.CharSequence)
-        println result as java.lang.Object
+        println result
     }
 
     static void main(String[] args) {
         sum(10,5)
-        // say("Hello" as java.lang.Object, "World" as java.lang.Object)
-        say("ABC" as java.lang.Object, "World" as java.lang.Object)
+        // say("Hello", "World")
+        say("ABC", "World")
 
-        println "===== test eachFile =====" as java.lang.Object
+        println "===== test eachFile ====="
         new File('.').eachFile { println it.name }
     }
 }
