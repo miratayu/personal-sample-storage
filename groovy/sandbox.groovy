@@ -11,7 +11,7 @@ class Example {
             println "first string is empty!"
             return
         }
-        String result = "say!" + (first as java.lang.CharSequence) + (second as java.lang.CharSequence)
+        String result = "say!" + first + second
         println result
     }
 
