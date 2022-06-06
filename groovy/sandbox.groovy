@@ -19,6 +19,9 @@ class Example {
         sum(10,5)
         // say("Hello" as java.lang.Object, "World" as java.lang.Object)
         say("ABC" as java.lang.Object, "World" as java.lang.Object)
+
+        println "===== test eachFile =====" as java.lang.Object
+        new File('.').eachFile { println it.name }
     }
 }
 
