@@ -21,7 +21,13 @@ class Example {
         say("ABC", "World")
 
         println "===== test eachFile ====="
-        new File('.').eachFile { println it.name }
+        def anyFiles = ""
+        new File('.').eachFile {
+            println it.name
+            anyFiles += (it.name + "\n")
+        }
+        println "===== test anyFiles ====="
+        println anyFiles
     }
 }
 
