@@ -2,6 +2,7 @@ import logging
 
 from util_pack import sample
 from util_pack import file_operations
+from util_pack import contents
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -27,9 +28,11 @@ def sample_runs() -> None:
 
     logger.info(f'sample.printer: {sample.printer()}')
 
+    file_operations.run()
+
 
 if __name__ == '__main__':
     logger.info("sandbox")
     # sample_runs()
-    file_operations.run()
     # inequality_sign()
+    contents.load()
