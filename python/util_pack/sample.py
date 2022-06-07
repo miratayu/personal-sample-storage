@@ -34,7 +34,7 @@ def join_items(data: dict) -> None:
     logger.info(result)
 
 
-def load_json_file(file_name: str = 'contents_list.json') -> None:
+def load_json_file(file_name: str = 'resource/contents_list.json') -> None:
     with open(file_name) as load_file:
         test_file = json.load(load_file)
     logger.info(f'test_file: {test_file}')
