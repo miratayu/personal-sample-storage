@@ -28,11 +28,20 @@ def sample_runs() -> None:
 
     logger.info(f'sample.printer: {sample.printer()}')
 
+
+def file_operations_runs() -> None:
+    """ sample runs """
     file_operations.run()
+
+
+def contents_runs() -> None:
+    """ sample runs """
+    contents.load()
 
 
 if __name__ == '__main__':
     logger.info("sandbox")
     # sample_runs()
     # inequality_sign()
-    contents.load()
+    # file_operations_runs()
+    contents_runs()
