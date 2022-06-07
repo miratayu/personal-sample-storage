@@ -16,11 +16,15 @@ def load() -> None:
     logger.info(f"contents_files: {contents_files}")
 
     file_list = []
-    for contents_file in contents_files:
+    file_list_json = {}
+    for index, contents_file in enumerate(contents_files):
         file_list.append(contents_file + "\n")
+        file_list_json[index] = contents_file
     logger.info(f"file_list: {file_list}")
     with open('resource/output/contents_file_list.txt', 'w') as file:
         file.writelines(file_list)
+    with open('resource/output/contents_file_list.json', 'w') as file:
+        json.dump(file_list_json, file, ensure_ascii=False)
 
     for current_file in contents_files:
         logger.info(f"current_file: {current_file}")
