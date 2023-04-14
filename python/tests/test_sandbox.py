@@ -3,6 +3,8 @@ import logging
 
 from _pytest.fixtures import FixtureRequest
 
+from python.sandbox import sandbox
+
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -27,3 +29,7 @@ class TestSandBox:
         logger.info(f'test name: {request.node.name}')
         logger.info(f'self._markers(request: {self._markers(request)}')
         logger.info(f'self._id(request): {self._id(request)}')
+        test_value = {
+            "test": 1
+        }
+        assert sandbox.validation(test_value)
