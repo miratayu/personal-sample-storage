@@ -78,3 +78,8 @@ def validation(source) -> bool:
     if key_checker(source, "test") is None:
         return False
     return True
+
+
+def sample_checker(expected: bool, actual: bool) -> bool:
+    """ sample checker """
+    return actual is expected
