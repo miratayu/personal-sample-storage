@@ -3,7 +3,7 @@ import logging
 
 from _pytest.fixtures import FixtureRequest
 
-from python.sandbox import sandbox
+from sandbox import sandbox
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
