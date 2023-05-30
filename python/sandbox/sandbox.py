@@ -83,3 +83,36 @@ def validation(source) -> bool:
 def sample_checker(expected: bool, actual: bool) -> bool:
     """ sample checker """
     return actual is expected
+
+
+class Sandbox:
+    """ class sandbox """
+
+    def __init__(self, sample_impl: sample.Sample) -> None:
+        """ init """
+        self.log_head = "[Sandbox]"
+        self.sample_create = sample_impl.create()
+
+    def run(self):
+        """ run """
+        logger.info(f"{self.log_head} run")
+        self._process()
+        self._result()
+
+    def _process(self):
+        """ process """
+        logger.info(f"{self.log_head} process")
+        self.sample_create.alpha()
+
+    def _result(self):
+        """ result """
+        logger.info(f"{self.log_head} result")
+        self.sample_create.beta()
+        self._view()
+
+    def _view(self):
+        """ view """
+        logger.info(f"{self.log_head} view")
+        gamma_list = self.sample_create.gamma()
+        logger.info(f"{self.log_head} gamma_list: {gamma_list}")
+        logger.info(f"{self.log_head} len(gamma_list): {len(gamma_list)}")

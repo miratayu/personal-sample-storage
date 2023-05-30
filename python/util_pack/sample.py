@@ -89,3 +89,41 @@ def run(*run_steps, a=0, b=1) -> None:
         for count in range(repeat_count):
             logger.info(f'count: {count+1} / {repeat_count}')
             run_step()
+
+
+class SampleUtil:
+    """ class sample utility """
+    def __init__(self) -> None:
+        """ init """
+        self.log_head = "[SampleUtil]"
+
+    def alpha(self) -> None:
+        """ alpha """
+        logger.info(f"{self.log_head} alpha")
+
+    def beta(self) -> None:
+        """ beta """
+        logger.info(f"{self.log_head} beta")
+
+    def gamma(self) -> list:
+        """ gamma """
+        logger.info(f"{self.log_head} gamma")
+        return [1, 2, 3]
+
+
+class Sample:
+    """ class sample """
+
+    def __init__(self) -> None:
+        """ init """
+        self.log_head = "[Sample]"
+
+    def create(self):
+        """ create """
+        logger.info(f"{self.log_head} sample create")
+        sample_util = SampleUtil()
+        return sample_util
+
+    def view(self) -> None:
+        """ view """
+        logger.info(f"{self.log_head} sample view")

@@ -33,3 +33,27 @@ class TestSandBox:
             "test": 1
         }
         assert sandbox.validation(test_value)
+
+    @pytest.mark.SandBox
+    @pytest.mark.id_002
+    def test_sand_box(self, request: FixtureRequest):
+        logger.info(f'request: {request}')
+        logger.info(f'type(request): {type(request)}')
+        logger.info(f'test name: {request.node.name}')
+        logger.info(f'self._markers(request: {self._markers(request)}')
+        logger.info(f'self._id(request): {self._id(request)}')
+        test_value = {
+            "test": 1
+        }
+        test_value.update(report={})
+        logger.info(f"test_value: {test_value}")
+        test_value['report'].update(a={
+            "isEnabled": True,
+            "isPassed": False
+        })
+        logger.info(f"test_value: {test_value}")
+        test_value['report'].update(b={
+            "isEnabled": False,
+            "isPassed": False
+        })
+        logger.info(f"test_value: {test_value}")
