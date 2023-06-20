@@ -1,5 +1,9 @@
+import logging
+
 from sandbox import sandbox
-from util_pack import sample
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def _checker(expected: bool, actual: bool) -> None:
@@ -9,6 +13,7 @@ def _checker(expected: bool, actual: bool) -> None:
 
 def test_mock(mocker):
     """ test sample mock """
+    logger.info("test sample mock")
     mocker.patch("sandbox.sandbox.sample_checker", side_effect=[False, True])
     result = sandbox.sample_checker(True, True)
     print(result)
@@ -20,6 +25,7 @@ def test_mock(mocker):
 
 def test_mock_sandbox(mocker):
     """ test mock sandbox """
+    logger.info("test mock sandbox")
     mock_sample_util = mocker.Mock()
     mock_sample_util.gamma = mocker.Mock(return_value=[4, 5, 6])
     mock_sample = mocker.Mock()
