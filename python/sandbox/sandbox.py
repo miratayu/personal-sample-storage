@@ -85,6 +85,48 @@ def sample_checker(expected: bool, actual: bool) -> bool:
     return actual is expected
 
 
+def check_validation():
+    count: int = 5
+    test_source = None
+    # test_source = {"sand": "test_1"}
+    for i in range(count):
+        logger.info(f"count: {i}")
+        if test_source is None:
+            logger.info("test_source is None")
+            continue
+        if not validation(test_source):
+            logger.info("validation false")
+            continue
+        logger.info("SUCCESS")
+
+
+def summary_configs():
+    test_source = [
+        {"name": "abc", "number": 1},
+        {"name": "abc", "number": 2},
+        {"name": "abc", "number": 3},
+        {"name": "def", "number": 1},
+        {"name": "def", "number": 2},
+        {"name": "def", "number": 3},
+        {"name": "xyz", "number": 1},
+        {"name": "xyz", "number": 1},
+        {"name": "xyz", "number": 1},
+        {"name": "xyz", "number": 999},
+    ]
+    test_config = {}
+    for source in test_source:
+        name = source["name"]
+        number = source["number"]
+        try:
+            numbers = test_config[name].get("numbers")
+        except Exception as e:
+            logger.debug(e)
+            numbers = []
+        numbers.append(number)
+        test_config[name] = {"numbers": list(set(numbers))}
+    logger.info(f"test_config: {test_config}")
+
+
 class Sandbox:
     """ class sandbox """
 

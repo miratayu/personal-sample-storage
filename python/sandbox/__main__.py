@@ -14,17 +14,8 @@ if __name__ == '__main__':
     # contents_runs()
     # sample_001()
 
-    count: int = 5
-    test_source = None
-    # test_source = {"sand": "test_1"}
-    for i in range(count):
-        logger.info(f"count: {i}")
-        if test_source is None:
-            logger.info("test_source is None")
-            continue
-        if not sandbox.validation(test_source):
-            logger.info("validation false")
-            continue
-        logger.info("SUCCESS")
+    # check_validation()
+
+    sandbox.summary_configs()
 
     logger.info("end sandbox main")
