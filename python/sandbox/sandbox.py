@@ -115,8 +115,8 @@ def summary_configs():
     ]
     test_config = {}
     for source in test_source:
-        name = source["name"]
-        number = source["number"]
+        name = source['name']
+        number = source['number']
         try:
             numbers = test_config[name].get("numbers")
         except Exception as e:
@@ -125,6 +125,25 @@ def summary_configs():
         numbers.append(number)
         test_config[name] = {"numbers": list(set(numbers))}
     logger.info(f"test_config: {test_config}")
+
+
+def sort_timestamp():
+    test_source = [
+        {"timestamp": "2023-08-02T01:23:45.678Z", "score": 9},
+        {"timestamp": "2023-08-05T12:34:56.789Z", "score": 8},
+        {"timestamp": "2023-08-01T01:23:45.678Z", "score": 7},
+        {"timestamp": "2023-08-05T01:23:45.678Z", "score": 6},
+        {"timestamp": "2023-08-04T12:34:56.789Z", "score": 5},
+        {"timestamp": "2023-08-01T12:34:56.789Z", "score": 4},
+        {"timestamp": "2023-08-02T12:34:56.789Z", "score": 3},
+        {"timestamp": "2023-08-03T01:23:45.678Z", "score": 2},
+        {"timestamp": "2023-08-03T12:34:56.789Z", "score": 1},
+        {"timestamp": "2023-08-04T01:23:45.678Z", "score": 0},
+    ]
+    test_source.sort(key=lambda x: x['timestamp'], reverse=True)
+    logger.info(f"test_source: {test_source}")
+    logger.info(f"test_source[0]['timestamp']: {test_source[0]['timestamp']}")
+    assert test_source[0]['timestamp'] == "2023-08-05T12:34:56.789Z"
 
 
 class Sandbox:

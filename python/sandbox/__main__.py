@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
     # check_validation()
 
-    sandbox.summary_configs()
+    # sandbox.summary_configs()
+    sandbox.sort_timestamp()
 
     logger.info("end sandbox main")
