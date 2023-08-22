@@ -17,6 +17,15 @@ if __name__ == '__main__':
     # check_validation()
 
     # sandbox.summary_configs()
-    sandbox.sort_timestamp()
+    # sandbox.sort_timestamp()
+
+    sandbox.dict_partition({
+        "name": "test_*",
+        "@timestamp": "now-1d",
+        "timestamp": {"gte": "now-7d", "lt": "now-1h"},
+        "number": 1,
+        "flg": True,
+        "message": "sample"
+    })
 
     logger.info("end sandbox main")

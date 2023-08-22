@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 def inequality_sign() -> None:
+    """ inequality sign """
     min_count = 10
     max_count = 10
     current_count = 10
@@ -40,6 +41,7 @@ def contents_runs() -> None:
 
 
 def move() -> None:
+    """ move """
     x = 1
     y = 1
     vy = {}
@@ -54,6 +56,7 @@ def move() -> None:
 
 
 def sample_001() -> None:
+    """ sample 001 """
     repeat: int = 0
     data_list = ["a", "b", "c"]
     for i in range(repeat):
@@ -85,7 +88,8 @@ def sample_checker(expected: bool, actual: bool) -> bool:
     return actual is expected
 
 
-def check_validation():
+def check_validation() -> None:
+    """ check validation """
     count: int = 5
     test_source = None
     # test_source = {"sand": "test_1"}
@@ -100,7 +104,8 @@ def check_validation():
         logger.info("SUCCESS")
 
 
-def summary_configs():
+def summary_configs() -> None:
+    """ summary configs """
     test_source = [
         {"name": "abc", "number": 1},
         {"name": "abc", "number": 2},
@@ -127,7 +132,8 @@ def summary_configs():
     logger.info(f"test_config: {test_config}")
 
 
-def sort_timestamp():
+def sort_timestamp() -> None:
+    """ sort timestamp """
     test_source = [
         {"timestamp": "2023-08-02T01:23:45.678Z", "score": 9},
         {"timestamp": "2023-08-05T12:34:56.789Z", "score": 8},
@@ -146,6 +152,46 @@ def sort_timestamp():
     assert test_source[0]['timestamp'] == "2023-08-05T12:34:56.789Z"
 
 
+def dict_partition(params: dict) -> None:
+    """ dict partition """
+    result = []
+    for key, value in params.items():
+        logger.info(f"key: {key}, value: {value}, type(value): {type(value)}")
+        current_item = pattern_match(key, value)
+        result.append(current_item)
+    logger.info(f"result: {result}")
+
+
+def pattern_match(key: str, value: any) -> dict:
+    """ pattern match """
+    timestamp = {
+        "normal": {"range": {key: value}},
+        "string": {"range": {key: {"gte": value, "lt": "now"}}}
+    }
+    pattern = {
+        "name": {
+            "normal": {"match": {key: value}},
+            "wildcard": {"wildcard": {key: value}}
+        },
+        "timestamp": timestamp,
+        "@timestamp": timestamp
+    }
+    result = {"match": {key: value}}
+    state = "normal"
+
+    try:
+        if "*" in value:
+            state = "wildcard"
+        elif type(value) is str:
+            state = "string"
+        result = pattern[key][state]
+    except Exception as e:
+        logger.debug(e)
+        if state == "string":
+            result = {"match": {f"{key}.keyword": value}}
+    return result
+
+
 class Sandbox:
     """ class sandbox """
 
@@ -154,24 +200,24 @@ class Sandbox:
         self.log_head = "[Sandbox]"
         self.sample_create = sample_impl.create()
 
-    def run(self):
+    def run(self) -> None:
         """ run """
         logger.info(f"{self.log_head} run")
         self._process()
         self._result()
 
-    def _process(self):
+    def _process(self) -> None:
         """ process """
         logger.info(f"{self.log_head} process")
         self.sample_create.alpha()
 
-    def _result(self):
+    def _result(self) -> None:
         """ result """
         logger.info(f"{self.log_head} result")
         self.sample_create.beta()
         self._view()
 
-    def _view(self):
+    def _view(self) -> None:
         """ view """
         logger.info(f"{self.log_head} view")
         gamma_list = self.sample_create.gamma()
