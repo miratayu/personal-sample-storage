@@ -158,6 +158,7 @@ def dict_partition(params: dict) -> None:
     for key, value in params.items():
         logger.info(f"key: {key}, value: {value}, type(value): {type(value)}")
         current_item = pattern_match(key, value)
+        logger.info(f"current_item: {current_item}")
         result.append(current_item)
     logger.info(f"result: {result}")
 
