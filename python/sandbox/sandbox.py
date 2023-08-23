@@ -174,6 +174,9 @@ def pattern_match(key: str, value: any) -> dict:
             "normal": {"match": {key: value}},
             "wildcard": {"wildcard": {key: value}}
         },
+        "exists": {
+            "normal": {"exists": {"field": value}}
+        },
         "timestamp": timestamp,
         "@timestamp": timestamp
     }
@@ -181,13 +184,15 @@ def pattern_match(key: str, value: any) -> dict:
     state = "normal"
 
     try:
-        if "*" in value:
+        if key == "exists":
+            pass
+        elif "*" in value:
             state = "wildcard"
         elif type(value) is str:
             state = "string"
         result = pattern[key][state]
     except Exception as e:
-        logger.debug(e)
+        logger.warning(e)
         if state == "string":
             result = {"match": {f"{key}.keyword": value}}
     return result

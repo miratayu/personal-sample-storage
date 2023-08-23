@@ -25,7 +25,8 @@ if __name__ == '__main__':
         "timestamp": {"gte": "now-7d", "lt": "now-1h"},
         "number": 1,
         "flg": True,
-        "message": "sample"
+        "message": "sample",
+        "exists": "keyword"
     })
 
     logger.info("end sandbox main")
