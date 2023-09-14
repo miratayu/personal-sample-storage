@@ -208,6 +208,48 @@ def pattern_match(key: str, value: any) -> dict:
     return result
 
 
+def list_dict_integration() -> None:
+    """ list_dict_integration """
+    source = [
+        {"code": "BEL", "type": "fast", "id": 1, "name": "abc", "score": 123, "tag": "sample"},
+        {"code": "GEL", "type": "slow", "id": 2, "name": "def", "score": 456, "tag": "sample"},
+        {"code": "BEL", "type": "fast", "id": 3, "name": "ghi", "score": 789, "tag": "sample"}
+    ]
+    target = [
+        {"code": "BEL", "type": "fast", "id": 1, "name": "abc", "score": 321, "tag": "temple"},
+        {"code": "BEL", "type": "fast", "id": 2, "name": "def", "score": 654, "tag": "temple"},
+        {"code": "GEL", "type": "fast", "id": 3, "name": "ghi", "score": 987, "tag": "temple"}
+    ]
+    contents_value = {
+        "source": source,
+        "target": target
+    }
+    result_list = []
+    for i in contents_value["source"]:
+        result = {}
+        for j in contents_value["target"]:
+            if i["code"] != j["code"]:
+                continue
+            if i["type"] != j["type"]:
+                continue
+            if i["id"] != j["id"]:
+                continue
+            result = {
+                "code": i["code"],
+                "id": i["id"],
+                "source_tag": i["tag"],
+                "target_tag": j["tag"],
+                "source_score": i["score"],
+                "target_score": j["score"]
+            }
+        if not result:
+            continue
+        logger.info(f"result: {result}")
+        result_list.append(result)
+
+    logger.info(f"result_list: {result_list}")
+
+
 class Sandbox:
     """ class sandbox """
 
