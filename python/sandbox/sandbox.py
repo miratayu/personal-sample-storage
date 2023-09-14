@@ -154,6 +154,16 @@ def sort_timestamp() -> None:
 
 def dict_partition(params: dict) -> None:
     """ dict partition """
+    if params == {}:
+        params = {
+            "name": "test_*",
+            "@timestamp": "now-1d",
+            "timestamp": {"gte": "now-7d", "lt": "now-1h"},
+            "number": 1,
+            "flg": True,
+            "message": "sample",
+            "exists": "keyword"
+        }
     result = []
     for key, value in params.items():
         logger.info(f"key: {key}, value: {value}, type(value): {type(value)}")
