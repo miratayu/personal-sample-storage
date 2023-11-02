@@ -2,18 +2,20 @@ package org.example
 
 class Sample {
     static int add(int a, int b) {
-        println "add"
+        println "[Sample] add"
         return a + b
     }
 }
 
 static void main(String[] args) {
-    println "Hello world!"
-    println Sample.add(1, 2)
-    println Sandbox.sampleOne()
-    println Sandbox.checkType("test")
-    println Sandbox.checkType(1)
-    println Sandbox.checkType(true)
-    println Sandbox.checkType([])
-    println Sandbox.checkType([:])
+    String logHead = "[Main]"
+    println "${logHead} Hello world!"
+    println "${logHead} ${Sample.add(1, 2)}"
+    Sandbox sandbox = new Sandbox()
+    println "${logHead} ${sandbox.sampleOne()}"
+    println "${logHead} ${sandbox.checkType("test")}"
+    println "${logHead} ${sandbox.checkType(1)}"
+    println "${logHead} ${sandbox.checkType(true)}"
+    println "${logHead} ${sandbox.checkType([])}"
+    println "${logHead} ${sandbox.checkType([:])}"
 }
