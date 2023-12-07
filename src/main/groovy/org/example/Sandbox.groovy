@@ -48,7 +48,7 @@ class Sandbox {
         return "none"
     }
 
-    def splitText(String text = "test_sample", String delimiter = "/") {
+    def splitText(String text = "test/sample", String delimiter = "/") {
         println "${this.logHead} splitText"
         println "${this.logHead} text: ${text}"
         println "${this.logHead} delimiter: ${delimiter}"
