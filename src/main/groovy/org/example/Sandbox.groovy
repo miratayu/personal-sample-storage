@@ -57,15 +57,15 @@ class Sandbox {
         String[] splitText = text.split(delimiter)
         println "${this.logHead} splitText: ${splitText}"
         println "${this.logHead} splitText.size(): ${splitText.size()}"
-        def texts = [
+        def textMap = [
             "main": splitText[0],
             "sub": ""
         ]
 
         if (text.contains(delimiter)) {
-            texts.sub = splitText[1]
+            textMap.sub = splitText[1]
         }
 
-        return texts
+        return textMap
     }
 }
