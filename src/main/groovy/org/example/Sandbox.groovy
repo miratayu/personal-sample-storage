@@ -2,8 +2,21 @@ package org.example
 
 class Sandbox {
     String logHead = "[Sandbox]"
+    ArrayList dataList = []
 
     Sandbox(){}
+
+    Boolean checkDataList() {
+        println "${this.logHead} checkDataList"
+        println "${this.logHead} this.class.name: ${this.class.name}"
+        println "${this.logHead} this.class.methods: ${this.class.methods}"
+        Boolean result = true
+        if(!this.dataList) {
+            result = false
+        }
+        println "${this.logHead} result: ${result}"
+        return result
+    }
 
     void sampleOne() {
         println "${this.logHead} sampleOne"
@@ -14,6 +27,7 @@ class Sandbox {
         def name = object.name
         println "${this.logHead} ${name}"
     }
+
     def checkType(value) {
         println "${this.logHead} checkType: ${value.getClass().getSimpleName()}"
         if (value instanceof String) {
@@ -32,5 +46,26 @@ class Sandbox {
             return "hashMap"
         }
         return "none"
+    }
+
+    def splitText(String text = "test_sample", String delimiter = "/") {
+        println "${this.logHead} splitText"
+        println "${this.logHead} text: ${text}"
+        println "${this.logHead} delimiter: ${delimiter}"
+        println "${this.logHead} text.contains(delimiter): ${text.contains(delimiter)}"
+
+        String[] splitText = text.split(delimiter)
+        println "${this.logHead} splitText: ${splitText}"
+        println "${this.logHead} splitText.size(): ${splitText.size()}"
+        def texts = [
+            "main": splitText[0],
+            "sub": ""
+        ]
+
+        if (text.contains(delimiter)) {
+            texts.sub = splitText[1]
+        }
+
+        return texts
     }
 }
