@@ -63,7 +63,7 @@ class Sandbox {
         ]
 
         if (text.contains(delimiter)) {
-            textMap.sub = text.replaceFirst("${textMap.main}/", "")
+            textMap.sub = text.replaceFirst("${textMap.main}${delimiter}", "")
         }
 
         return textMap
