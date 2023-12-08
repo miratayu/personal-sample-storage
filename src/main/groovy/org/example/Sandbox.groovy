@@ -48,7 +48,7 @@ class Sandbox {
         return "none"
     }
 
-    def splitText(String text = "test/sample", String delimiter = "/") {
+    def splitText(String text = "test/sample/template/sandbox", String delimiter = "/") {
         println "${this.logHead} splitText"
         println "${this.logHead} text: ${text}"
         println "${this.logHead} delimiter: ${delimiter}"
@@ -63,7 +63,7 @@ class Sandbox {
         ]
 
         if (text.contains(delimiter)) {
-            textMap.sub = splitText[1]
+            textMap.sub = text.replaceFirst("${textMap.main}/", "")
         }
 
         return textMap
