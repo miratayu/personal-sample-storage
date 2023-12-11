@@ -48,24 +48,24 @@ class Sandbox {
         return "none"
     }
 
-    def splitText(String text = "test/sample/template/sandbox", String delimiter = "/") {
+    def splitText(String text = "test/sample/template/sandbox", String delimiter = "/", Integer divisionNumber = 2) {
         println "${this.logHead} splitText"
         println "${this.logHead} text: ${text}"
         println "${this.logHead} delimiter: ${delimiter}"
         println "${this.logHead} text.contains(delimiter): ${text.contains(delimiter)}"
 
-        String[] splitText = text.split(delimiter)
+        String[] splitText = text.split(delimiter, divisionNumber)
         println "${this.logHead} splitText: ${splitText}"
         println "${this.logHead} splitText.size(): ${splitText.size()}"
-        def textMap = [
-            "main": splitText[0],
-            "sub": ""
-        ]
-
         if (text.contains(delimiter)) {
-            textMap.sub = text.replaceFirst("${textMap.main}${delimiter}", "")
+            return [
+                "main": splitText[0],
+                "sub": ""
+            ]
         }
-
-        return textMap
+        return [
+            "main": splitText[0],
+            "sub": splitText[1]
+        ]
     }
 }
