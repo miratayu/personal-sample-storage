@@ -1,10 +1,10 @@
 import logging
 
-from util_pack import sample
-from util_pack import file_operations
-from util_pack import contents
+from utility import sample
+from utility import file_operations
+from utility import contents
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
