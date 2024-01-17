@@ -21,4 +21,5 @@ if __name__ == '__main__':
     # sandbox.sort_timestamp()
     # sandbox.dict_partition({})
     sandbox.list_dict_integration()
+    logger.info(not [])
     logger.info("end sandbox main")
