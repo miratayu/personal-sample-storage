@@ -19,7 +19,7 @@ class SampleJenkinsTest extends BasePipelineTest {
     @Test
     void testSampleJenkins() {
         System.out.printf("${this.logHead} test start\n");
-        def sampleJenkins = new SampleJenkins(script: script)
+        def sampleJenkins = new SampleJenkins(script: script, text: "b")
         Assertions.assertEquals(1, sampleJenkins.run())
         System.out.printf("${this.logHead} test end\n");
     }
