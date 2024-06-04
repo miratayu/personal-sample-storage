@@ -14,13 +14,30 @@ class SampleJenkinsTest extends BasePipelineTest {
     void setUp() {
         super.setUp()
         this.script = loadScript('src/test/resources/EmptyPipeline.groovy')
+        helper.addReadFileMock('output', 'FAILED!!!')
     }
 
     @Test
     void testSampleJenkins() {
         System.out.printf("${this.logHead} test start\n");
-        def sampleJenkins = new SampleJenkins(script: script, text: "b")
+        def sampleJenkins = new SampleJenkins(script: script, text: "abc")
         Assertions.assertEquals(1, sampleJenkins.run())
+        System.out.printf("${this.logHead} test end\n");
+    }
+
+    @Test
+    void testReadFile() {
+        System.out.printf("${this.logHead} test start\n");
+        def sampleJenkins = new SampleJenkins(script: script)
+        Assertions.assertEquals(1, sampleJenkins.readFile('src/test/resources/sample.txt'))
+        System.out.printf("${this.logHead} test end\n");
+    }
+
+    @Test
+    void testReadJSON() {
+        System.out.printf("${this.logHead} test start\n");
+        def sampleJenkins = new SampleJenkins(script: script)
+        Assertions.assertEquals(1, sampleJenkins.readJSON('src/test/resources/sample.json'))
         System.out.printf("${this.logHead} test end\n");
     }
 }

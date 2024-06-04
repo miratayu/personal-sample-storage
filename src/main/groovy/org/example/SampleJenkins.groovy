@@ -10,4 +10,18 @@ class SampleJenkins implements Serializable {
         script.echo "${this.logHead} text: ${text}"
         return 1
     }
+
+    def readFile(fileName) {
+        script.echo "${this.logHead} readFile"
+        def contents = script.readFile file: fileName
+        script.echo "${this.logHead} contents: ${contents}"
+        return contents
+    }
+
+    def readJSON(fileName) {
+        script.echo "${this.logHead} readJSON"
+        def contents = script.readJSON file: fileName
+        script.echo "${this.logHead} contents: ${contents}"
+        return contents
+    }
 }

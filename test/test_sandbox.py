@@ -57,3 +57,15 @@ class TestSandBox:
             "isPassed": False
         })
         logger.info(f"test_value: {test_value}")
+
+    @pytest.mark.SandBox
+    @pytest.mark.id_003
+    def test_sand_box(self, request: FixtureRequest):
+        logger.info(f'request: {request}')
+        flags = [True, False]
+        for flg in flags:
+            logger.info(f'flg: {flg}')
+            if not flg:
+                logger.info('early return')
+                return
+            logger.info('Normal return')
