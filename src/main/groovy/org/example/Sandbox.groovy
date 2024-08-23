@@ -1,5 +1,7 @@
 package org.example
 
+import org.apache.commons.collections4.MapUtils;
+
 class Sandbox {
     String logHead = "[Sandbox]"
     ArrayList dataList = []
@@ -65,5 +67,25 @@ class Sandbox {
             "main": splitText[0],
             "sub": text.contains(delimiter) ? splitText[1] : ""
         ]
+    }
+
+    def extraction(list) {
+        println "$logHead extraction"
+        def nameMap = [
+            T1: 'test',
+            S1: 'send',
+            P1: 'post'
+        ]
+        def invertNameMap = MapUtils.invertMap(nameMap)
+        String result = ""
+        list.each { current ->
+            if (nameMap?."$current") {
+                result = current
+            }
+            if (invertNameMap?."$current") {
+                result = invertNameMap."$current"
+            }
+        }
+        return result
     }
 }

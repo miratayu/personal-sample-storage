@@ -18,4 +18,13 @@ static void main(String[] args) {
     println "${logHead} ${sandbox.checkType(true)}"
     println "${logHead} ${sandbox.checkType([])}"
     println "${logHead} ${sandbox.checkType([:])}"
+    def nameList = [
+        ['test'],
+        ['mail', 'send'],
+        ['post'],
+        ['S1']
+    ]
+    nameList.each {
+        println "${logHead} extraction_result: ${sandbox.extraction(it)}"
+    }
 }
