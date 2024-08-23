@@ -1,6 +1,6 @@
 package org.example
 
-import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.collections4.MapUtils
 
 class Sandbox {
     String logHead = "[Sandbox]"
@@ -76,7 +76,7 @@ class Sandbox {
             S1: 'send',
             P1: 'post'
         ]
-        def invertNameMap = MapUtils.invertMap(nameMap)
+        def invertNameMap = MapUtils.invertMap(nameMap) as HashMap
         String result = ""
         list.each { current ->
             if (nameMap?."$current") {
