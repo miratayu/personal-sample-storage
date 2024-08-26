@@ -100,7 +100,7 @@ class Sandbox implements Serializable {
                 where += " AND "
             }
             current.each { key, value ->
-                String[] values = value.split("[,\\s]+")
+                String[] values = value.split(/[,s]+/)
                 // println("values: ${values.getClass().getSimpleName()}")
                 // println("values: ${values.length}")
                 values.eachWithIndex { splitValue, valueIndex ->
