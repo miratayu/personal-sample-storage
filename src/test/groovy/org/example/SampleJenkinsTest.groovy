@@ -29,7 +29,7 @@ class SampleJenkinsTest extends BasePipelineTest {
     void testReadFile() {
         System.out.printf("${this.logHead} test start\n");
         def sampleJenkins = new SampleJenkins(script: script)
-        Assertions.assertEquals(1, sampleJenkins.readFile('src/test/resources/sample.txt'))
+        Assertions.assertEquals('', sampleJenkins.readFile('src/test/resources/sample.txt'))
         System.out.printf("${this.logHead} test end\n");
     }
 
@@ -37,7 +37,7 @@ class SampleJenkinsTest extends BasePipelineTest {
     void testReadJSON() {
         System.out.printf("${this.logHead} test start\n");
         def sampleJenkins = new SampleJenkins(script: script)
-        Assertions.assertEquals(1, sampleJenkins.readJSON('src/test/resources/sample.json'))
+        Assertions.assertEquals([sample: 'text'], sampleJenkins.readJSON('src/test/resources/sample.json'))
         System.out.printf("${this.logHead} test end\n");
     }
 }
