@@ -2,7 +2,7 @@ package org.example
 
 import org.apache.commons.collections4.MapUtils
 
-class Sandbox {
+class Sandbox implements Serializable {
     String logHead = "[Sandbox]"
     ArrayList dataList = []
 
