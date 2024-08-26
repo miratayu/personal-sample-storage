@@ -91,30 +91,27 @@ class Sandbox implements Serializable {
 
     def createQuery(data) {
         println "$logHead createQuery"
-        String select = "SELECT ${data.select}"
-        String from = "FROM ${data.from}"
         String where = "WHERE "
         data.where.eachWithIndex { current, index ->
-            // println("index: $index")
+            // println("$logHead index: $index")
             if (index != 0) {
                 where += " AND "
             }
             current.each { key, value ->
-                String[] values = value.split(/[,s]+/)
-                // println("values: ${values.getClass().getSimpleName()}")
-                // println("values: ${values.length}")
+                String[] values = value.split("[,\\s]+")
+                // println("$logHead values: ${values.getClass().getSimpleName()}")
+                // println("$logHead values: ${values.length}")
                 values.eachWithIndex { splitValue, valueIndex ->
                     if (valueIndex != 0) {
                         where += " OR "
                     }
-                    // println("$key='$splitValue'")
+                    // println("$logHead $key='$splitValue'")
                     where += "$key='$splitValue'"
                 }
             }
         }
-        // println("where: $where")
-
-        String createdQuery = "$select $from $where"
+        // println("$logHead where: $where")
+        String createdQuery = "SELECT ${data.select} FROM ${data.from} $where"
         return createdQuery
     }
 }
