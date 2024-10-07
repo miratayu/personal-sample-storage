@@ -1,8 +1,9 @@
 package org.example
 
 class Sample {
-    static int add(int a, int b) {
-        println "[Sample] add"
+    String logHead = "[Sample]"
+    int add(int a, int b) {
+        println "$logHead add"
         return a + b
     }
 }
@@ -10,7 +11,8 @@ class Sample {
 static void main(String[] args) {
     String logHead = "[Main]"
     println "$logHead Hello world!"
-    println "$logHead ${Sample.add(1, 2)}"
+    Sample sample = new Sample()
+    println "$logHead ${sample.add(1, 2)}"
     Sandbox sandbox = new Sandbox()
     println "$logHead ${sandbox.sampleOne()}"
     println "$logHead ${sandbox.checkType("test")}"
@@ -31,10 +33,15 @@ static void main(String[] args) {
         select: "*",
         from: "test_measured",
         where: [
-            ["ipAddress": "0.0.0.0"],
-            ["version": "1.2.3"],
-            ["os": "windows, linux, android, ios"]
+            [ipAddress: "0.0.0.0"],
+            [version: "1.2.3"],
+            [os: "windows, linux, android, ios"],
+            [timestamp: ""]
         ]
     ]
+    def sector = 'select'
+    def sectorData = queryBase?."$sector"
+    println "$logHead $sectorData"
+    println "$logHead ${queryBase[sector]}"
     println "$logHead createdQuery: ${sandbox.createQuery(queryBase)}"
 }
