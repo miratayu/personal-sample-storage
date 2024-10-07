@@ -39,9 +39,13 @@ static void main(String[] args) {
             [timestamp: ""]
         ]
     ]
+    println "$logHead createdQuery: ${sandbox.createQuery(queryBase)}"
     def sector = 'select'
     def sectorData = queryBase?."$sector"
     println "$logHead $sectorData"
     println "$logHead ${queryBase[sector]}"
-    println "$logHead createdQuery: ${sandbox.createQuery(queryBase)}"
+    println "$logHead ${queryBase?[sector]}"
+    def dummyBase = [:]
+    println "$logHead ${dummyBase?[sector]}"
+    println "$logHead ${dummyBase[sector]}"
 }
