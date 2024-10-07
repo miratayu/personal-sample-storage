@@ -48,4 +48,11 @@ static void main(String[] args) {
     def dummyBase = [:]
     println "$logHead ${dummyBase?[sector]}"
     println "$logHead ${dummyBase[sector]}"
+    def nullBase = null
+    println "$logHead ${nullBase?[sector]}"
+    try {
+        println "$logHead ${nullBase[sector]}"
+    } catch(ex) {
+        println(ex)
+    }
 }
