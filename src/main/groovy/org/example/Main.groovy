@@ -58,5 +58,8 @@ static void main(String[] args) {
     def dataBase = [select: [test: [one: 1, too: 2]]]
     println "$logHead ${dataBase?[sector]?['test']}"
     def secondSector = 'from'
-    println "$logHead ${dataBase?[sector]?[secondSector]?['one']}"
+    def dot = dataBase?."$sector"?."$secondSector"?.one
+    def bracket = dataBase?[sector]?[secondSector]?['one']
+    println "$logHead dot: $dot"
+    println "$logHead bracket: $bracket"
 }
