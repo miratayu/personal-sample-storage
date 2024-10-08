@@ -55,4 +55,8 @@ static void main(String[] args) {
     } catch(ex) {
         println(ex)
     }
+    def dataBase = [select: [test: [one: 1, too: 2]]]
+    println "$logHead ${dataBase?[sector]?['test']}"
+    def secondSector = 'from'
+    println "$logHead ${dataBase?[sector]?[secondSector]?['one']}"
 }
