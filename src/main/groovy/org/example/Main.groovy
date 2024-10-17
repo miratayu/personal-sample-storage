@@ -62,4 +62,11 @@ static void main(String[] args) {
     def bracket = dataBase?[sector]?[secondSector]?['one']
     println "$logHead dot: $dot"
     println "$logHead bracket: $bracket"
+
+    // def data = null
+    def data = [flg: true, config: [test: 'a']]
+    Boolean flg = data?.flg ?: false
+    println "$logHead flg: $flg"
+    def conf = data?.config ?: [:]
+    println "$logHead conf: $conf"
 }
