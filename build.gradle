@@ -11,7 +11,12 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.apache.groovy/groovy
     implementation 'org.apache.groovy:groovy:4.0.2'
+    // https://mvnrepository.com/artifact/org.apache.groovy/groovy-json
+    implementation 'org.apache.groovy:groovy-json:4.0.2'
+    // https://mvnrepository.com/artifact/org.apache.groovy/groovy-yaml
+    implementation 'org.apache.groovy:groovy-yaml:4.0.2'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
     implementation 'org.apache.commons:commons-collections4:4.5.0-M2'
     testImplementation platform('org.junit:junit-bom:5.9.1')

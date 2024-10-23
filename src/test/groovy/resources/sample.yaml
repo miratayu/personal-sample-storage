@@ -1,0 +1,6 @@
+
+test:
+  data: 'sample'
+
+sample:
+  test: 'data'
