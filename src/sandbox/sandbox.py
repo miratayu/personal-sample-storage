@@ -250,6 +250,66 @@ def list_dict_integration() -> None:
     logger.info(f"result_list: {result_list}")
 
 
+def list_dict_duplicate() -> None:
+    """ list_dict_duplicate """
+    logger.info('sandbox.list_dict_duplicate')
+
+    def has_duplicates(seq: list) -> bool:
+        return len(seq) != len(set(seq))
+
+    data_list = [
+        {'data': 123},
+        {'data': 456},
+        {'data': 789},
+        {'data': 123},
+        {'data': 789},
+        {'data': 789},
+        {'data': 789},
+    ]
+    values_list = []
+    for data in data_list:
+        values_list.append(data.get('data'))
+    logger.info(f"values_list: {values_list}")
+    is_duplicate = has_duplicates(values_list)
+    logger.info(f"is_duplicate: {is_duplicate}")
+    if is_duplicate:
+        logger.info(f"!!!!!duplicate error!!!!!")
+
+
+def poc_check() -> None:
+    """ poc_check """
+    data = {'test': 123, 'prime': 456}
+    index: str = 'test'
+    logger.info(data[index])
+    logger.info(not [])
+
+    test_data = ['a', 'b', 'c', 'd', 'e']
+    logger.info(f"test_data: {test_data}")
+    for i, current in enumerate(test_data):
+        logger.info(f"index: {i}, current: {current}")
+        result = test_data[0]
+        logger.info(f"result: {result}")
+        if result in test_data:
+            # test_data.remove(result)
+            test_data.append(i)
+            logger.info(f"test_data: {test_data}")
+        if i > 20:
+            break
+
+    test_list = ['a', 'b', 'c', 'd', 'e']
+    target_data = 'c'
+    result_list = [item for item in test_list if target_data in item]
+    logger.info(f"result_list: {result_list}")
+
+    empty_list = []
+
+    if empty_list is None:
+        logger.info(f"list is None")
+    if not empty_list:
+        logger.info(f"list is empty")
+    logger.info(f"empty_list: {empty_list}")
+
+
 class Sandbox:
     """ class sandbox """
 

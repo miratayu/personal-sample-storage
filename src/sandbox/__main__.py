@@ -19,9 +19,7 @@ if __name__ == '__main__':
     # sandbox.summary_configs()
     # sandbox.sort_timestamp()
     # sandbox.dict_partition({})
-    sandbox.list_dict_integration()
-    data = {'test': 123, 'prime': 456}
-    index: str = 'test'
-    logger.info(data[index])
-    logger.info(not [])
+    # sandbox.list_dict_integration()
+    sandbox.list_dict_duplicate()
+    # sandbox.poc_check()
     logger.info("end sandbox main")
